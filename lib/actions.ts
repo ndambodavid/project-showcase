@@ -29,9 +29,6 @@ export const uploadImage = async (imagePath: string) => {
     });
     return response.json();
   } catch (err) {
-    console.log('====================================');
-    console.log(err);
-    console.log('====================================');
     throw err;
   }
 };
@@ -54,6 +51,7 @@ export const createNewProject = async (form: ProjectForm, creatorId: string, tok
   const imageUrl = await uploadImage(form.image);
 
   if (imageUrl.url) {
+    console.log(imageUrl);
     client.setHeader("Authorization", `Bearer ${token}`);
 
     const variables = {
