@@ -7,7 +7,7 @@ const User = g.model('User', {
   avatarUrl: g.url(),
   description: g.string().length({ min: 2, max: 1000 }).optional(),
   githubUrl: g.url().optional(),
-  linkedinUrl: g.url().optional(), 
+  linkedInUrl: g.url().optional(), 
   projects: g.relation(() => Project).list().optional(),
 }).auth((rules: any) => {
   rules.public().read()
@@ -22,7 +22,8 @@ const Project = g.model('Project', {
   githubUrl: g.url(), 
   category: g.string().search(),
   createdBy: g.relation(() => User),
-}).auth((rules: any) => {
+})
+.auth((rules: any) => {
   rules.public().read()
   rules.private().create().delete().update()
 })
